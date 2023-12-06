@@ -1,0 +1,30 @@
+#include <sl.h>
+
+int main()
+{
+	float posX = 320;
+	float posY = 320;
+	float velX = -1;
+	float velY = -1;
+
+	slWindow(640, 480, "Hello", false);
+
+	while (!slShouldClose())
+	{
+		slSetForeColor(0, 1, 0, 1);
+		slCircleFill(posX, posY, 20, 25);
+		posX += velX;
+		posY += velY;
+
+		if (posX <= 0 || posX >= 640)
+			velX *= -1;
+		if (posY <= 0 || posY >= 480)
+			velY *= -1;
+		slRender();
+
+	}
+
+	slClose();
+
+	return 0;
+}
